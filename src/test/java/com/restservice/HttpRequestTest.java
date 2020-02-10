@@ -24,4 +24,16 @@ public class HttpRequestTest {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
                 String.class)).contains("Hello, World");
     }
+
+    @Test
+    public void greetingShouldReturnCustomMessage() throws Exception {
+        String stringTest = "Test";
+        Greeting greeting;
+
+        greeting = this.restTemplate.getForObject("http://localhost:" + port + "/greeting?name=" + stringTest + "!",
+                Greeting.class);
+
+        assertThat(greeting.getId() == 1);
+        assertThat(greeting.getContent().contains("Hello, Test!"));
+    }
 }
