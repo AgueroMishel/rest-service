@@ -1,10 +1,17 @@
 package com.restservice;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Convert {
     private final String stringNumber;
 
     public Convert(int number) {
         this.stringNumber = convertNumberToCommaFormattedString(number);
+    }
+
+    public Convert(
+            @JsonProperty("stringNumber") String number) {
+        this.stringNumber = number;
     }
 
     public String getStringNumber() {
