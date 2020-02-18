@@ -5,19 +5,19 @@ public enum IntegerFormat {
     DOT("dot", "."),
     NOFORMAT("noformat", "");
 
-    private String stringValue;
-    private String value;
+    private String enumStringValue;
+    private String charValue;
 
-    IntegerFormat(String stringValue, String value) {
-        this.stringValue = stringValue;
-        this.value = value;
+    IntegerFormat(String enumStringValue, String charValue) {
+        this.enumStringValue = enumStringValue;
+        this.charValue = charValue;
     }
 
-    public String getStringValue() {
-        return stringValue;
+    public String getEnumStringValue() {
+        return enumStringValue;
     }
 
-    public String getValue() {
-        return value;
+    public String getCharValue() {
+        return charValue;
     }
 }

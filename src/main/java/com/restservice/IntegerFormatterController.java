@@ -1,5 +1,8 @@
 package com.restservice;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,27 +13,25 @@ import Formatters.IntegerList;
 
 @RestController
 public class IntegerFormatterController {
-//    @RequestMapping("/")
-//    public @ResponseBody String
-
     @PostMapping("/format")
-    public String[][] format(
-            @RequestBody IntegerList[] integerLists) {
+    public List<List<String>> format(
+            @RequestBody List<IntegerList> integerLists) {
         IntegerFormat format;
-        int[] unformattedList;
-        String[] formattedList;
-        String[][] formattedLists = new String[integerLists.length][];
+        List<Integer> unformattedList;
+        List<String> formattedList;
+        List<List<String>> formattedLists = new ArrayList<>();
 
-        for(int j = 0; j < integerLists.length; j++) {
-            format = integerLists[j].getFormat();
-            unformattedList = integerLists[j].getUnformattedList();
-            formattedList = new String[unformattedList.length];
 
-            for (int i = 0; i < unformattedList.length; i++) {
-                formattedList[i] = IntegerFormatter.format(unformattedList[i], format);
+        for(IntegerList currentIntegerList : integerLists) {
+            format = currentIntegerList.getFormat();
+            unformattedList = currentIntegerList.getUnformattedList();
+            formattedList = new ArrayList<>();
+
+            for(int currentInteger : unformattedList) {
+                formattedList.add(IntegerFormatter.format(currentInteger, format));
             }
 
-            formattedLists[j] = formattedList;
+            formattedLists.add(formattedList);
         }
 
         return formattedLists;

@@ -12,7 +12,7 @@ public class IntegerFormatter {
         while(number > 0) {
             if(number > 999) {
                 currentDigits = number % 1000;
-                formattedNumber = format.getValue() + String.format("%03d", currentDigits) + formattedNumber;
+                formattedNumber = format.getCharValue() + String.format("%03d", currentDigits) + formattedNumber;
             } else {
                 formattedNumber = number + formattedNumber;
             }

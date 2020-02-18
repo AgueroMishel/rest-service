@@ -13,7 +13,7 @@ public class IntegerFormatEnumDeserializer extends JsonDeserializer<IntegerForma
         final String jsonValue = parser.getText();
 
         for(final IntegerFormat enumValue : IntegerFormat.values()) {
-            if (enumValue.getStringValue().equals(jsonValue)) {
+            if (enumValue.getEnumStringValue().equals(jsonValue)) {
                 return enumValue;
             }
         }
