@@ -1,11 +1,15 @@
 package com.restservice;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Greeting {
 
     private final long id;
     private final String content;
 
-    public Greeting(long id, String content) {
+    public Greeting(
+            @JsonProperty("id") long id,
+            @JsonProperty("content") String content) {
         this.id = id;
         this.content = content;
     }
